@@ -20,4 +20,5 @@ abstract class AppColor {
 
   static const Color blueWhite = Color(0xffBFB2F8);
   static const Color blue = Colors.blue;
+  static const Color transparent = Colors.transparent;
 }
