@@ -1,6 +1,3 @@
-class AppConstants{
-  static const String baseURL ="http://classical.runasp.net";
-}
 
 //? Onboarding
 const String next = "NEXT";
@@ -48,6 +45,11 @@ const String congratulations = "Congratulations!";
 const String desCongratulations =
     "Your account password has been successfully changed. You can now return and log in again!";
 const String guest = "Continue as a guest ";
+
+const String firstName= "FirstName";
+const String enterYourFirstName = "Enter your first name ";
+const String lastName= "LastName";
+const String enterYourLastName = "Enter your last name ";
 
 //? profile
 const String setting = "Setting";

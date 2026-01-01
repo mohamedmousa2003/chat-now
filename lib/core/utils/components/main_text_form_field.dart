@@ -15,7 +15,7 @@ class TextFormFieldWidget extends StatefulWidget {
   final TextEditingController controller;
   final Validator myValidator;
   final bool? enabled;
-  bool isPhone;
+  final bool isPhone;
   final double horizontalPadding;
   final double verticalPadding;
   final TextStyle? textStyle;
@@ -25,17 +25,17 @@ class TextFormFieldWidget extends StatefulWidget {
     required this.title,
     required this.controller,
     required this.myValidator,
-    this.horizontalPadding = 10.0,
-    this.verticalPadding = 7.0,
-    this.textStyle,
     required this.hintText,
     this.keyboardType = TextInputType.text,
     this.obscureText = false,
-    this.isPhone = false,
     this.isPassword = false,
-    super.key,
+    this.isPhone = false,
+    this.horizontalPadding = 10.0,
+    this.verticalPadding = 7.0,
+    this.textStyle,
     this.enabled,
-    this.prefixIcon, // ✅ أضفنا هذا
+    this.prefixIcon,
+    super.key,
   });
 
   @override
@@ -49,39 +49,50 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.w),
+          padding: EdgeInsets.symmetric(horizontal: widget.horizontalPadding.w),
           child: Text(
             widget.title,
-            style: widget.textStyle ?? AppTextStyle.size16,
+            style: widget.textStyle ?? AppTextStyle.size16.copyWith(
+              fontWeight: FontWeight.w600,
+              color: AppColor.black,
+            ),
           ),
         ),
-        SizedBox(width: widget.verticalPadding.h),
+        SizedBox(height: widget.verticalPadding.h),
         TextFormField(
           enabled: widget.enabled ?? true,
-          // inputFormatters: [
-          //   FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9@*\-_]')),
-          // ],
+          obscureText: widget.obscureText,
+          controller: widget.controller,
+          keyboardType: widget.keyboardType,
+          validator: widget.myValidator,
           style: TextStyle(
             fontSize: 18.sp,
             fontWeight: FontWeight.w500,
             color: widget.enabled == false ? AppColor.gray : AppColor.black,
           ),
-          obscureText: widget.obscureText,
           decoration: InputDecoration(
             hintText: widget.hintText,
             hintStyle: TextStyle(
-              fontSize: 18.sp,
+              fontSize: 16.sp,
               fontWeight: FontWeight.w400,
               color: AppColor.gray,
             ),
-            fillColor: Colors.white,
             filled: true,
+            fillColor: Colors.white,
+            contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
+            border: outlineInputBorder(AppColor.gray, 1),
+            enabledBorder: outlineInputBorder(AppColor.gray, 1),
+            focusedBorder: outlineInputBorder(AppColor.primary, 2),
+            errorBorder: outlineInputBorder(AppColor.red, 1),
+            focusedErrorBorder: outlineInputBorder(AppColor.red, 1),
+            prefixIcon: widget.isPhone
+                ? const ContainerFlagWidget()
+                : widget.prefixIcon,
+            prefixIconColor: AppColor.gray,
             suffixIcon: widget.isPassword
                 ? IconButton(
               icon: Icon(
-                widget.obscureText
-                    ? Icons.visibility_off
-                    : Icons.visibility,
+                widget.obscureText ? Icons.visibility_off : Icons.visibility,
                 color: AppColor.gray,
                 size: 25.sp,
               ),
@@ -92,36 +103,15 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
               },
             )
                 : null,
-            prefixIcon: widget.isPhone
-                ? const ContainerFlagWidget()
-                : widget.prefixIcon,
-            prefixIconColor: AppColor.gray,
-            contentPadding:  EdgeInsets.symmetric(
-              horizontal: 10.w,
-              vertical: 10.h,
-            ),
-            enabledBorder: outlineInputBorder(color: AppColor.gray, width: 1),
-            disabledBorder: outlineInputBorder(color: AppColor.gray, width: 1),
-            focusedBorder:
-            outlineInputBorder(color: AppColor.primary, width: 2),
-            errorBorder: outlineInputBorder(color: AppColor.red, width: 1),
-            focusedErrorBorder:
-            outlineInputBorder(color: AppColor.red, width: 1),
           ),
-          keyboardType: widget.keyboardType,
-          controller: widget.controller,
-          validator: widget.myValidator,
         ),
       ],
     );
   }
 
-  OutlineInputBorder outlineInputBorder({
-    required Color color,
-    required double width,
-  }) {
+  OutlineInputBorder outlineInputBorder(Color color, double width) {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(40.r),
+      borderRadius: BorderRadius.circular(30.r),
       borderSide: BorderSide(color: color, width: width),
     );
   }
@@ -133,12 +123,11 @@ class ContainerFlagWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.transparent,
       width: 105.w,
+      color: Colors.transparent,
       child: Padding(
         padding: EdgeInsets.only(left: 10.w),
         child: Row(
-          textDirection: TextDirection.ltr,
           children: [
             Text(
               '+967',
@@ -147,7 +136,6 @@ class ContainerFlagWidget extends StatelessWidget {
                 fontWeight: FontWeight.w500,
                 color: AppColor.black,
               ),
-              textDirection: TextDirection.ltr,
             ),
             SizedBox(width: 4.w),
             Image.asset(
