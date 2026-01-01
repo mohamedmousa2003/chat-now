@@ -1,7 +1,15 @@
+plugins {
+    id("com.google.gms.google-services")
+}
 allprojects {
     repositories {
         google()
         mavenCentral()
+    }
+}
+buildscript {
+    dependencies {
+        classpath("com.google.gms:google-services:4.3.15")
     }
 }
 
