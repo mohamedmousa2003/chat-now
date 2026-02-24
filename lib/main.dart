@@ -1,9 +1,14 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'config/route_manager/route_generator.dart';
 import 'config/route_manager/routes.dart';
+import 'di/di.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  configureDependencies();
+  await Firebase.initializeApp( );
   runApp(const MyApp());
 }
 

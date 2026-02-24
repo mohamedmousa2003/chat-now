@@ -16,3 +16,10 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 flutter pub add flutter_screenutil
+flutter pub add equatable
+flutter pub add bloc
+flutter pub add get_it
+flutter pub add injectable
+flutter pub add injectable_generator
+flutter pub add dev:build_runner
+flutter pub add flutter_bloc
