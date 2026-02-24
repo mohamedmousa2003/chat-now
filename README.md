@@ -1,25 +1,118 @@
-# chat_now
+# 💬 Chat Now
 
-A new Flutter project.
+A modern Flutter authentication module built using **Clean Architecture**, Firebase Authentication, and Cubit state management.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
 
-A few resources to get you started if this is your first Flutter project:
+### ✨ Splash Screen
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+* App logo display
+* Initialization logic (check authentication state / token)
+* Automatic navigation to **Login** or **Home**
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
 
-flutter pub add flutter_screenutil
-flutter pub add equatable
-flutter pub add bloc
-flutter pub add get_it
-flutter pub add injectable
-flutter pub add injectable_generator
-flutter pub add dev:build_runner
-flutter pub add flutter_bloc
+## 🔐 Authentication
+
+### ✅ Login
+
+Users can sign in using:
+
+* Email
+* Password
+
+**Flow**
+
+* Validate inputs
+* Call Login UseCase
+* Authenticate via Firebase
+* Navigate to Home on success
+* Show error message on failure
+
+---
+
+### 📝 Register
+
+Users can create a new account using:
+
+* Name
+* Email
+* Password
+
+**Flow**
+
+* Validate form data
+* Call Register UseCase
+* Create user via Firebase
+* Store user information
+* Navigate to Home
+
+---
+
+## 🧠 Architecture
+
+The project follows **Clean Architecture** principles:
+
+```
+lib/
+ ├── core/
+ ├── features/
+ │    └── Login/
+ │         ├── data/
+ │         ├── domain/
+ │         └── presentation/
+ │    └── Register/
+ │         ├── data/
+ │         ├── domain/
+ │         └── presentation/
+```
+
+### Domain Layer
+
+* Entities
+* Repository Contracts
+* UseCases
+
+### Data Layer
+
+* Firebase DataSources
+* Repository Implementations
+
+### Presentation Layer
+
+* Screens
+* Cubit / State Management
+* Form Validation
+
+---
+
+## 🛠 Tech Stack
+
+* Flutter
+* Firebase Authentication
+* Clean Architecture
+* Cubit (flutter_bloc)
+* Dependency Injection (Injectable + GetIt)
+
+---
+
+## 📦 Packages Used
+
+- [`flutter_screenutil`](https://pub.dev/packages/flutter_screenutil)
+- [`flutter_bloc`](https://pub.dev/packages/flutter_bloc)
+- [`equatable`](https://pub.dev/packages/equatable)
+- [`injectable`](https://pub.dev/packages/injectable)
+- [`build_runner`](https://pub.dev/packages/build_runner)
+- [`get_it`](https://pub.dev/packages/get_it)
+
+
+
+
+
+Built with ❤️ using Flutter
+
+
+
+
