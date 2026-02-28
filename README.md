@@ -16,7 +16,7 @@ A modern Flutter authentication module built using **Clean Architecture**, Fireb
 
 ## 🚀 Features
 
-### ✨ Splash Screen
+### ✨ Splash **Screen**
 
 * App logo display
 * Initialization logic (check authentication state / token)
