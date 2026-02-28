@@ -6,9 +6,9 @@ A modern Flutter authentication module built using **Clean Architecture**, Fireb
 
 ## 📱 Screenshots
 
-|                Splash Screen                |               Home                |                   Browse                   |
-|:-------------------------------------------:|:---------------------------------:|:------------------------------------------:|
-| ![Categories En ](assets/screen/splash.png) | ![ Home ](assets/screen/Home.png) |       ![ Browse ](assets/screen/Home2.png)       |
+|               Splash Screen                |              Home               |                     Browse                     |
+|:------------------------------------------:|:-------------------------------:|:----------------------------------------------:|
+| ![Splash Screen](assets/screen/splash.png) | ![Home](assets/screen/Home.png) |       ![Browse](assets/screen/Home2.png)       |
 
 |              Room               |                Search                |              Create Room               |                 Room                 |
 |:-------------------------------:|:--------------------------------------:|:--------------------------------------:|:---------------------------------------:|
